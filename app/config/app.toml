@@ -1,0 +1,18 @@
+[default]
+EXTENSIONS = [ "app.core.database:init_app", "app.core.marshmallow:init_app", "app.core.configuration:init_app", "app.http.routes.api:init_app", "app.http.routes.web:init_app", "app.http.routes.user:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.post:init_app", "app.http.routes.post:init_app", "app.http.routes.country:init_app", "app.http.routes.userprofile:init_app", "app.http.routes.costumer:init_app",]
+
+[development]
+DEBUG = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TOOLBAR_ENABLED = true
+TEMPLATES_AUTO_RELOAD = true
+
+[production]
+DEBUG = false
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+DEBUG_TB_PROFILER_ENABLED = false
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = false
+DEBUG_TOOLBAR_ENABLED = false
+TEMPLATES_AUTO_RELOAD = false
