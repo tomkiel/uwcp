@@ -1,4 +1,4 @@
-table_name = 'costumers'
+table_name = 'costomers'
 action = 'create'
 [create]
     [create.id]
