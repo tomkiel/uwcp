@@ -15,7 +15,7 @@ def main(shell_arguments):
         runner.migrate(args.dbmigrate)
 
     elif args.dbseed is not None:
-        runner.runSeeder(args.dbseed)
+        runner.run_seed()
 
     elif args.makemigration is not None:
         runner.create_migration(args.makemigration)
@@ -65,6 +65,8 @@ def parse_command_line(args):
 
     # Create Routes
     parser.add_argument('-mkroute', '--makeroute', nargs='?', type=str, help='Create a new Route file')
+
+    # Create SECRET_KEY
 
     ###
     args = parser.parse_args()

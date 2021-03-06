@@ -5,12 +5,35 @@ action = 'create'
     primary_key = "True"
     type = "Integer"
 
+    [create.name]
+    type = "String"
+
+    [create.email_account]
+    type = "String"
+    nullable = "False"
+    unique = "True"
+
+    [create.email_password]
+    type = "String"
+    nullable = "False"
+
+    [create.quota]
+    type = "Float"
+    default = 0.0
+
+
     [create.created_at]
     default = "datetime.utcnow"
     nullable = "False"
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"
+
+[relationship]
+
+    [relationship.mailDomain]
+    mode = "OneToMany"
+    column = "mail_domain_id"
+    table = "mail_domains"

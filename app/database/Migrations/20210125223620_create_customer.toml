@@ -1,4 +1,4 @@
-table_name = 'costomers'
+table_name = 'customers'
 action = 'create'
 [create]
     [create.id]
@@ -50,7 +50,6 @@ action = 'create'
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"
 
@@ -62,6 +61,6 @@ action = 'create'
     table = "users"
 
     [relationship.country]
-    mode = "OneToOne"
+    mode = "OneToMany"
     column = "country_id"
     table = "countries"

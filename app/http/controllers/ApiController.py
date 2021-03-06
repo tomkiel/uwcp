@@ -1,4 +1,7 @@
-from flask import jsonify
+from flask import jsonify, request
+from app.utils.helpers import http_error, hash_verify
+from app.database.Models.User import User, token, user_schema
+import jwt
 
 
 def index():
@@ -7,17 +10,5 @@ def index():
         {
             'status': 'ok',
             'message': 'Tudo funcionando por aqui!'
-        }
-    )
-
-
-def login():
-    return jsonify(
-        {
-            "targetUrl": "",
-            "success": "true",
-            "error": "",
-            "unAuthorizedRequest": "false",
-            "__abp": "true"
         }
     )

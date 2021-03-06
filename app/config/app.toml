@@ -1,5 +1,5 @@
 [default]
-EXTENSIONS = [ "app.core.database:init_app", "app.core.marshmallow:init_app", "app.core.configuration:init_app", "app.http.routes.api:init_app", "app.http.routes.web:init_app", "app.http.routes.user:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.file:init_app", "app.http.routes.post:init_app", "app.http.routes.post:init_app", "app.http.routes.country:init_app", "app.http.routes.userprofile:init_app", "app.http.routes.costumer:init_app",]
+EXTENSIONS = [ "app.core.database:init_app", "app.core.marshmallow:init_app", "app.core.configuration:init_app", "app.http.routes.api:init_app", "app.http.routes.web:init_app", "app.http.routes.user:init_app", "app.http.routes.file:init_app", "app.http.routes.country:init_app", "app.http.routes.userprofile:init_app", "app.http.routes.site:init_app", "app.http.routes.customer:init_app", "app.http.routes.maildomain:init_app", "app.http.routes.mailaccount:init_app", "app.http.routes.systemconfiguration:init_app", "app.http.routes.auth:init_app",]
 
 [development]
 DEBUG = true

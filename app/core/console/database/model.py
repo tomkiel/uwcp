@@ -113,15 +113,20 @@ def create_model_for_migration(migration):
             extern_table = ''
             for relation in migration.get('relationship'):
                 rel_column = '{} = orm.relationship('.format(relation)
-                if migration.get('relationship').get(relation).get('mode') == 'OneToOne':
-                    extern_table = migration.get('relationship').get(relation).get('table')
-                    extern_table = p.singular_noun(extern_table.title().replace('_', ''))
-                    rel_column = rel_column + '{}, remote_side=id'.format(extern_table) + ', back_populates="{}"'.format(table_name) + ')'
+                mode = migration.get('relationship').get(relation).get('mode')
+                extern_table = migration.get('relationship').get(relation).get('table')
+                extern_table = p.singular_noun(extern_table.title().replace('_', ''))
+
+                if mode == 'OneToOne' or mode == 'OneToMany':
+                    rel_column = rel_column + '"{}")'.format(relation.title())
                     mk_column = "{column} = db.Column(db.Integer, db.ForeignKey('{extern_table}.id'), index=True)".format(
                         column=migration.get('relationship').get(relation).get('column'),
                         extern_table=migration.get('relationship').get(relation).get('table')
                     )
-                relationship_imports.append("from app.database.Models." + extern_table + " import " + extern_table )
+                elif mode == 'ManyToOne':
+                    rel_column = rel_column + '"{}")'.format(relation.title())
+
+                relationship_imports.append("from app.database.Models." + extern_table + " import " + extern_table)
                 relationship_columns.append(mk_column + "\n\t" + rel_column)
 
         content = "from app.core.database import db\n" \

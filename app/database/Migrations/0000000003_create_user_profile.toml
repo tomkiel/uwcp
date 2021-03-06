@@ -48,7 +48,6 @@ action = 'create'
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"
 
@@ -60,7 +59,7 @@ action = 'create'
     table = "users"
 
     [relationship.country]
-    mode = "OneToOne"
+    mode = "OneToMany"
     column = "country_id"
     table = "countries"
 

@@ -1,5 +1,5 @@
 from .server import console
-from .database import migration, model
+from .database import migration, model, seeder
 from .http import route, controller
 
 
@@ -43,3 +43,10 @@ def create_route(name):
     """
     """
     return route.create_route(name)
+
+
+def run_seed():
+    """
+    """
+    return seeder.seed()
+

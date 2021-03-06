@@ -5,12 +5,22 @@ action = 'create'
     primary_key = "True"
     type = "Integer"
 
+    [create.domain]
+    type = "String"
+    nullable = "False"
+
     [create.created_at]
     default = "datetime.utcnow"
     nullable = "False"
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"
+
+[relationship]
+
+    [relationship.customer]
+    mode = "OneToMany"
+    column = "customer_id"
+    table = "customers"

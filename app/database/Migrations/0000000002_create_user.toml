@@ -24,7 +24,6 @@ action = 'create'
 
     [create.created_at]
     default = "datetime.utcnow"
-    nullable = "False"
     type = "TIMESTAMP"
 
     [create.updated_at]

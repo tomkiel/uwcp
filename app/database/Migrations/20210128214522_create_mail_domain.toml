@@ -5,12 +5,37 @@ action = 'create'
     primary_key = "True"
     type = "Integer"
 
+    [create.domain]
+    type = "String"
+    nullable = "False"
+
+    [create.policy]
+    type = "Boolean"
+
+    [create.dkim]
+    type = "Boolean"
+
+    [create.dkim_selector]
+    type = "String"
+
+    [create.dkim_private]
+    type = "Text"
+
+    [create.dns_record]
+    type = "Text"
+
     [create.created_at]
     default = "datetime.utcnow"
     nullable = "False"
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"
+
+[relationship]
+
+[relationship.customer]
+    mode = "OneToMany"
+    column = "customer_id"
+    table = "customers"

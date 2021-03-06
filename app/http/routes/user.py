@@ -4,7 +4,7 @@ user = Blueprint('user', __name__, url_prefix='/api/users')
 
 
 @user.route("", methods=['GET'])
-def root():
+def get():
     return UserController.get()
 
 

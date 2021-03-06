@@ -1,9 +1,6 @@
 from flask import render_template
 
 
-def index():
+def get():
     return render_template('index.html')
 
-
-def home():
-    return render_template('home.html')

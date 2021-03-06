@@ -3,15 +3,14 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import orm
 from sqlalchemy_serializer import SerializerMixin
 from datetime import datetime
-from app.database.Models.User import User
-from app.database.Models.Country import Country
-from app.database.Models.File import File
 
 Base = declarative_base()
 
 
 class UserProfile(db.Model, Base, SerializerMixin):
     __tablename__ = "user_profiles"
+    __table_args__ = {'extend_existing': True}
+
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(255))
     lastname = db.Column(db.String(255))
@@ -26,13 +25,11 @@ class UserProfile(db.Model, Base, SerializerMixin):
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
     created_at = db.Column(db.TIMESTAMP, nullable=False, default=datetime.utcnow)
-    updated_at = db.Column(db.TIMESTAMP, nullable=False, onupdate=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), index=True)
-    user = orm.relationship(User, remote_side=id, back_populates="user_profiles")
+    updated_at = db.Column(db.TIMESTAMP, onupdate=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user = orm.relationship("User")
     country_id = db.Column(db.Integer, db.ForeignKey("countries.id"), index=True)
-    country = orm.relationship(Country, remote_side=id, back_populates="user_profiles")
     file_id = db.Column(db.Integer, db.ForeignKey("files.id"), index=True)
-    file = orm.relationship(File, remote_side=id, back_populates="user_profiles")
 
     def __init__(
         self,

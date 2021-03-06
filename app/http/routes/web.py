@@ -5,8 +5,8 @@ web = Blueprint('web', __name__)
 
 
 @web.route("/", methods=['GET'])
-def root():
-    return WebController.index()
+def get():
+    return WebController.get()
 
 
 @web.route("/home", methods=['GET'])

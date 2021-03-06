@@ -5,12 +5,23 @@ action = 'create'
     primary_key = "True"
     type = "Integer"
 
+    [create.label]
+    type = "String"
+    nullable = "False"
+
+    [create.value]
+    type = "String"
+
+    [create.type]
+    type = "String"
+    nullable = "False"
+    deafult = "text"
+
     [create.created_at]
     default = "datetime.utcnow"
     nullable = "False"
     type = "TIMESTAMP"
 
     [create.updated_at]
-    nullable = "False"
     onupdate = "datetime.utcnow"
     type = "TIMESTAMP"

@@ -3,7 +3,7 @@ dynaconf_include = ["app/config/*.toml"]
 
 ### Deafult configurations
 APP_NAME='Falafel'
-SECRET_KEY=''
+SECRET_KEY='5023b417d8a843ecbeafd5cb81f741c4'
 APP_URL='http://localhost'
 ENV='@format {env[FLASK_ENV]}'
 

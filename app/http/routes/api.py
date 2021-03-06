@@ -5,8 +5,13 @@ api = Blueprint('api', __name__, url_prefix='/api')
 
 
 @api.route('/', methods=['GET'])
-def index():
+def get():
     return ApiController.index()
+
+
+@api.route('/login', methods=['POST'])
+def login():
+    return ApiController.login()
 
 
 def init_app(app):

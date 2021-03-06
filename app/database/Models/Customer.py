@@ -9,8 +9,8 @@ from app.database.Models.Country import Country
 Base = declarative_base()
 
 
-class Costumer(db.Model, Base, SerializerMixin):
-    __tablename__ = "costumers"
+class Customer(db.Model, Base, SerializerMixin):
+    __tablename__ = "customers"
     id = db.Column(db.Integer, primary_key=True)
     costumer_name = db.Column(db.String(255), nullable=False)
     costumer_code = db.Column(db.String(255), unique=True, nullable=False)
@@ -26,9 +26,9 @@ class Costumer(db.Model, Base, SerializerMixin):
     created_at = db.Column(db.TIMESTAMP, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.TIMESTAMP, nullable=False, onupdate=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), index=True)
-    user = orm.relationship(User, remote_side=id, back_populates="costumers")
+    user = orm.relationship("User")
     country_id = db.Column(db.Integer, db.ForeignKey("countries.id"), index=True)
-    country = orm.relationship(Country, remote_side=id, back_populates="costumers")
+    country = orm.relationship("Country")
 
     def __init__(
         self,

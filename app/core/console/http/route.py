@@ -30,11 +30,11 @@ def create_route(name):
                     """ + name + """ = Blueprint('""" + name + """', __name__, url_prefix='/""" + p.plural(name) + """')
 
                     @""" + name + """.route("/", methods=['GET'])
-                    def index():
+                    def get():
                         # """ + name + """ routes
                         # Utilize para separar as rotas da lógica de sua aplicação
                     
-                        return """ + name.capitalize() + """Controller.index()
+                        return """ + name.capitalize() + """Controller.get()
 
                     def init_app(app):
                         app.register_blueprint(""" + name + """)
@@ -70,25 +70,25 @@ def create_route_cmd(model):
     if check_route_exists(name) is False:
         with open(settings.get('FALAFEL_DIR') + settings.get('ROUTES_DIR') + '/' + name + '.py', 'w') as route:
             content = dedent("""\
-                from app.http.controllers import """ + name.capitalize() + """Controller
+                from app.http.controllers import """ + model + """Controller
                 from flask import Blueprint
                 """ + name + """ = Blueprint('""" + name + """', __name__, url_prefix='/""" + p.plural(name) + """')
     
                 @""" + name + """.route("/", methods=['GET'])
-                def index():
-                    return """ + name.capitalize() + """Controller.index()
+                def get():
+                    return """ + model + """Controller.get()
                     
                 @""" + name + """.route("/create", methods=['POST'])
-                def index():
-                    return """ + name.capitalize() + """Controller.create()
+                def create():
+                    return """ + model + """Controller.create()
                     
                 @""" + name + """.route("/<""" + name + """_id>", methods=['GET'])
                 def find(""" + name + """_id):
-                    return """ + name.capitalize() + """Controller.find()
+                    return """ + model + """Controller.find()
                     
                 @""" + name + """.route('/update', methods=['PUT'])
                 def update():
-                    return """ + name.capitalize() + """Controller.update()
+                    return """ + model + """Controller.update()
     
                 def init_app(app):
                     app.register_blueprint(""" + name + """)

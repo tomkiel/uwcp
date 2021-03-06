@@ -18,3 +18,5 @@ def time_serial(datetime):
 
 def http_error(error=404, message='No data!'):
     return abort(make_response(jsonify({'status': 'error', 'message': message}), error))
+
+

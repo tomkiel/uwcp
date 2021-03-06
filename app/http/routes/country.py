@@ -1,20 +1,20 @@
 from app.http.controllers import CountryController
 from flask import Blueprint
 
-country = Blueprint("country", __name__, url_prefix="/countries")
+country = Blueprint("country", __name__, url_prefix="/api/countries")
 
 
 @country.route("/", methods=["GET"])
-def index():
-    return CountryController.index()
+def get():
+    return CountryController.get()
 
 
 @country.route("/create", methods=["POST"])
-def index():
+def create():
     return CountryController.create()
 
 
-@country.route("/<country>", methods=["GET"])
+@country.route("/<country_id>", methods=["GET"])
 def find(country_id):
     return CountryController.find()
 

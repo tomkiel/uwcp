@@ -1,4 +1,4 @@
-from app.database.Models.User import User
+from app.database.Models.User import User, user_schema, users_schema
 from flask import jsonify, request
 from app.utils.helpers import http_error
 from app.core.database import db
